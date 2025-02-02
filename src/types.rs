@@ -1,13 +1,13 @@
 use crate::httpc::HttpcImpl;
 use crate::resolve::DnsCache;
 use crate::tls_api::TlsConnector;
+use coarsetime::Duration;
 use mio::Registry;
 use percent_encoding::{percent_encode, utf8_percent_encode, AsciiSet, CONTROLS};
 use pest::Parser;
 use smallvec::SmallVec;
 use std::hash::Hasher;
 use std::str::FromStr;
-use std::time::Duration;
 use url::Url;
 
 const FRAGMENT: &AsciiSet = &CONTROLS.add(b' ').add(b'"').add(b'<').add(b'>').add(b'`');

@@ -6,6 +6,7 @@ use crate::tls_api::{
 };
 use crate::types::{CallBuilderImpl, CallParam, IpList, RecvStateInt, SendStateInt};
 use crate::{CallRef, HttpcCfg, Result};
+use coarsetime::{Duration, Instant};
 use data_encoding::BASE64;
 use fxhash::FxHashMap as HashMap;
 use mio::net::TcpStream;
@@ -17,7 +18,6 @@ use std::io::{Read, Write};
 use std::net::{IpAddr, SocketAddr};
 use std::os::fd::AsFd;
 use std::str::FromStr;
-use std::time::{Duration, Instant};
 
 fn connect(addr: SocketAddr) -> Result<TcpStream> {
     let tcp = TcpStream::connect(addr)?;

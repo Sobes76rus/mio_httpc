@@ -5,9 +5,9 @@ use std::net::{IpAddr, Ipv4Addr, Ipv6Addr, SocketAddr, SocketAddrV4, SocketAddrV
 // use mio::Poll;
 use crate::dns_parser;
 use crate::dns_parser::{Packet, RRData};
+use coarsetime::{Duration, Instant};
 use rand;
 use smallvec::SmallVec;
-use std::time::{Duration, Instant};
 
 mod cache;
 pub use self::cache::DnsCache;

@@ -7,7 +7,7 @@ use mio::{event::Event, Interest, Registry, Token};
 use std::collections::VecDeque;
 // use fnv::FnvHashMap as HashMap;
 use crate::{Call, CallRef, RecvState, Response, Result, SendState};
-use std::time::Instant;
+use coarsetime::Instant;
 
 pub(crate) struct HttpcImpl {
     cache: DnsCache,
@@ -154,7 +154,7 @@ impl HttpcImpl {
 
     pub fn timeout_extend(&mut self, out: &mut Vec<CallRef>) {
         let now = Instant::now();
-        if now.saturating_duration_since(self.last_timeout).as_millis() < 50 {
+        if now.duration_since(self.last_timeout).as_millis() < 50 {
             return;
         }
         self.last_timeout = now;

@@ -22,6 +22,7 @@ rtls = ["webpki-roots", "webpki", "ring", "rustls", "rustls-pemfile"]
 
 [dependencies]
 byteorder = "1"
+coarsetime = "0.1.35"
 crypto-hash = { version = "0.3", optional = true }
 data-encoding = "2"
 failure = "0.1"

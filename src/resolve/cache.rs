@@ -1,6 +1,6 @@
-use fxhash::FxHashMap as HashMap;
-use std::time::{Duration, Instant};
 use crate::types::IpList;
+use coarsetime::{Duration, Instant};
+use fxhash::FxHashMap as HashMap;
 
 struct CacheEntry {
     expires: Instant,

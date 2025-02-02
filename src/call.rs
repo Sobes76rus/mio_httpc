@@ -2,6 +2,7 @@ use crate::connection::Con;
 use crate::tls_api::TlsConnector;
 use crate::types::*;
 use byteorder::{ByteOrder, LittleEndian};
+use coarsetime::{Duration, Instant};
 use data_encoding::{BASE64, HEXLOWER};
 use flate2::read::{DeflateDecoder, GzDecoder};
 use httparse::{self, Response as ParseResp};
@@ -11,7 +12,6 @@ use std::io::ErrorKind as IoErrorKind;
 use std::io::{Read, Write};
 use std::str::from_utf8;
 use std::str::FromStr;
-use std::time::{Duration, Instant};
 
 #[derive(PartialEq, Debug)]
 enum Dir {
