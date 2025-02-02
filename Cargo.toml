@@ -31,6 +31,7 @@ httparse = "1"
 itoa = "1"
 md5 = "0.7"
 mio = { version = "1", features = ["os-poll", "net"] }
+mio_httpc = { git = "https://github.com/Sobes76rus/mio_httpc", version = "0.10.6", features = ["native"] }
 native-tls = { version = "0.2", optional = true }
 openssl = { version = "0.10", optional = true, features = ["v102", "v110"] }
 percent-encoding = "2"
@@ -38,6 +39,7 @@ pest = "2"
 pest_derive = "2"
 rand = "0.8"
 ring = { version = "0.17", optional = true }
+rustix = { version = "0.38.44", features = ["net"] }
 rustls = { version = "0.23", default-features = false, features = [
     "ring",
     "logging",

@@ -15,6 +15,7 @@ use smallvec::SmallVec;
 use std::io::ErrorKind as IoErrorKind;
 use std::io::{Read, Write};
 use std::net::{IpAddr, SocketAddr};
+use std::os::fd::AsFd;
 use std::str::FromStr;
 use std::time::{Duration, Instant};
 
@@ -22,6 +23,8 @@ fn connect(addr: SocketAddr) -> Result<TcpStream> {
     let tcp = TcpStream::connect(addr)?;
     // not a fatal error
     let _ = tcp.set_nodelay(true);
+    let fd = tcp.as_fd();
+    rustix::net::sockopt::set_socket_keepalive(fd, true).expect("keepalive");
     return Ok(tcp);
 }
 
@@ -227,7 +230,7 @@ impl Con {
     }
 
     fn idle_timeout(&mut self, now: Instant) -> bool {
-        if now - self.idle_since >= Duration::from_secs(60) {
+        if now - self.idle_since >= Duration::from_secs(600) {
             return true;
         }
         false
