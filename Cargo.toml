@@ -11,7 +11,7 @@ license = "MIT/Apache-2.0"
 name = "mio_httpc"
 readme = "README.md"
 repository = "https://github.com/SergejJurecko/mio_httpc"
-version = "0.10.6"
+version = "0.10.7"
 
 [features]
 # Default does not work for https.
@@ -31,7 +31,9 @@ httparse = "1"
 itoa = "1"
 md5 = "0.7"
 mio = { version = "1", features = ["os-poll", "net"] }
-mio_httpc = { git = "https://github.com/Sobes76rus/mio_httpc", version = "0.10.6", features = ["native"] }
+mio_httpc = { git = "https://github.com/Sobes76rus/mio_httpc", version = "0.10.6", features = [
+    "native",
+] }
 native-tls = { version = "0.2", optional = true }
 openssl = { version = "0.10", optional = true, features = ["v102", "v110"] }
 percent-encoding = "2"
